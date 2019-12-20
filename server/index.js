@@ -4,21 +4,21 @@ const bodyParser = require('body-parser');
 const sequelize = require('./database');
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.send('Hello World!');
 });
 
-app.use('/users', require('./database').router);
+app.use('/auth', require('./database').router);
 
 app.listen(5000, function () {
-  console.log('Example app listening on port 5000!');
+    console.log('Example app listening on port 5000!');
 });
 
 sequelize.db
